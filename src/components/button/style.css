@@ -1,0 +1,25 @@
+
+
+#buttonNav{
+    background-color: #f30098;
+    width: 180px;
+    height: 50%;
+    border-radius: 40px;
+    border: none;
+    margin:0;
+}
+
+#buttonNavLink{
+    color: rgb(255,255,255);
+    font-family: Arial, Helvetica, sans-serif;
+    text-decoration: none;
+}
+
+#buttonNav:hover{
+    background-color: #4fa9dd;
+    width: 185px;
+    height: 50%;
+    border-radius: 40px;
+    border: none;
+    transition:cubic-bezier(0.19, 1, 0.22, 1)
+}

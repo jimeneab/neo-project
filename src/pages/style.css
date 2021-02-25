@@ -1,0 +1,75 @@
+.formData {
+  background-color: aqua;
+}
+
+.Hero {
+  width: 100vw;
+  height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  background-image: url(https://pediatriayfamilia.com/wp-content/uploads/2020/01/educacion-sexual-min.jpg);
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+}
+
+.Hero .heroContent h1 {
+  color: #002e84;
+}
+
+.Hero .heroContent h4 {
+  color: #4fa9dd;
+}
+
+.loginContentPage {
+  background-image: url("https://www.speakactchange.org/wp-content/uploads/2018/10/90-1.jpg");
+  width: 100vw;
+  height: 100vh;
+  background-size: cover;
+  background-position: center center;
+  background-repeat: no-repeat;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-filter: brightness(200%);
+          filter: brightness(200%);
+}
+
+.loginContentPage .white-panel {
+  background-color: #7d7d88;
+  -webkit-box-shadow: 0 0 10px 5px #00000096;
+          box-shadow: 0 0 10px 5px #00000096;
+  height: 70%;
+  width: 45%;
+  padding: 1%;
+}
+
+.loginContentPage .white-panel input {
+  background-color: lightblue;
+  border-radius: 4px;
+  border: 1.5px solid #4b4949;
+}
+
+.loginContentPage .register-info-box {
+  background-color: orchid;
+  -webkit-box-shadow: 5px 0 5px -5px #333;
+          box-shadow: 5px 0 5px -5px #333;
+  padding: 1%;
+  height: 45%;
+  text-align: center;
+  width: 30%;
+}
+/*# sourceMappingURL=style.css.map */

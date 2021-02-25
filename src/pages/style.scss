@@ -1,0 +1,56 @@
+.formData{
+    background-color: aqua;
+}
+
+.Hero{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: url(https://pediatriayfamilia.com/wp-content/uploads/2020/01/educacion-sexual-min.jpg);
+    background-size: cover;
+    background-position: center center ;
+    background-repeat: no-repeat;
+    .heroContent{
+        h1{
+            color: #002e84;
+        }
+        h4{
+            color: #4fa9dd;
+        }
+    }
+}
+
+.loginContentPage{
+    background-image: url('https://www.speakactchange.org/wp-content/uploads/2018/10/90-1.jpg');
+    width: 100vw;
+    height: 100vh;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    filter: brightness(200%);
+    .white-panel{
+        background-color:rgb(125, 125, 136);
+        box-shadow: 0 0 10px 5px #00000096;
+        height: 70%;
+        width: 45%;
+        padding: 1%;
+        input{
+            background-color:lightblue;
+            border-radius: 4px;
+            border: 1.5px solid rgb(75, 73, 73)
+        }
+    }
+    .register-info-box{
+        background-color: orchid;
+        box-shadow: 5px 0 5px -5px #333;
+        padding: 1%;
+        height: 45%;
+        text-align: center;
+        width: 30%;
+    }
+}
