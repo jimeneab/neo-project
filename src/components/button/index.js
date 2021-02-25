@@ -6,7 +6,7 @@ import './style.css'
 const ButtonOne = (props) => {
   return (
     <div>
-      <Button className='m-2' id="buttonNav"><Link to={props.to} id="buttonNavLink">{props.text}</Link></Button>{''}
+      <Button className='m-2' id="buttonNav" onClick={props.onClick}><Link to={props.to} id="buttonNavLink">{props.text}</Link></Button>{''}
     </div>
   );
 }

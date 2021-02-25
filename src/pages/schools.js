@@ -1,30 +1,49 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {Form, FormGroup, Label, Input, Row, Container} from 'reactstrap';
 import ButtonOne from './../components/button/index'
 import MainNav from './../components/navBar/mainNav'
 import Footer from './../components/footer/footer'
+import ModalApp from './../components/modal/index'
 
 function SchoolPage(){
+  const [entryObject, setEntryObject]= useState({});
+
+  const getEntryData = event =>{
+    let property = event.target.name
+    let value = event.target.value
+    setEntryObject({...entryObject, [property]:value})
+  }
+   const saveDataEntry=()=>{
+      fetch('https://neo-app-55ad5-default-rtdb.firebaseio.com/schools/.json',{
+        method: "POST",
+        body: JSON.stringify(entryObject)
+      })
+    }
         return (
         <>
+        <ModalApp/>
         <MainNav/>
         <Container>
           <Form>
+          <FormGroup>
+              <Label for="urlimg">URL image</Label>
+              <Input type="urlimg" name="urlimg" id="urlimg" placeholder="Image" onChange={getEntryData}  onChange={getEntryData}/>
+            </FormGroup>
             <FormGroup>
               <Label for="name">Name</Label>
-              <Input type="name" name="name" id="schoolName" placeholder="Neo educate" />
+              <Input type="name" name="name" id="schoolName" placeholder="Neo educate" onChange={getEntryData}  onChange={getEntryData}/>
             </FormGroup>
             <FormGroup>
               <Label for="exampleEmail">Email</Label>
-              <Input type="email" name="email" id="exampleEmail" placeholder="example@neoeducate.com.mx" />
+              <Input type="email" name="email" id="exampleEmail" placeholder="example@neoeducate.com.mx" onChange={getEntryData} />
             </FormGroup>
             <FormGroup>
               <Label for="examplePassword">Password</Label>
-              <Input type="password" name="password" id="examplePassword" placeholder="*********" />
+              <Input type="password" name="password" id="examplePassword" placeholder="*********" onChange={getEntryData} />
             </FormGroup>
             <FormGroup>
               <Label for="country">Country</Label>
-              <Input type="select" name="country" id="schoolCountry">
+              <Input type="select" name="country" id="schoolCountry" onChange={getEntryData}>
               <option value="United States">United States</option>
               <option value="United Kingdom">United Kingdom</option>
               <option value="Afghanistan">Afghanistan</option>
@@ -272,7 +291,7 @@ function SchoolPage(){
             </FormGroup>
             <FormGroup>
               <Label for="State">State</Label>
-              <Input type="select" name="city" id="schoolState">
+              <Input type="select" name="city" id="schoolState" onChange={getEntryData}>
                 <option>1</option>
                 <option>2</option>
                 <option>3</option>
@@ -282,7 +301,7 @@ function SchoolPage(){
             </FormGroup>
             <FormGroup>
               <Label for="exampleSelectMulti">Size</Label>
-              <Input type="select" name="size" id="schoolSize">
+              <Input type="select" name="size" id="schoolSize" onChange={getEntryData}>
                 <option>Small</option>
                 <option>Medium</option>
                 <option>Large</option>
@@ -290,15 +309,15 @@ function SchoolPage(){
             </FormGroup>
             <FormGroup>
               <Label for="Location">Location</Label>
-              <Input type="text" name="location" id="schoolLocation" />
+              <Input type="text" name="location" id="schoolLocation" onChange={getEntryData} />
             </FormGroup>
             <FormGroup check>
               <Label check>
-                <Input type="checkbox" />{' '}
+                <Input type="checkbox" onChange={getEntryData} name="active" />
                 Active
               </Label>
             </FormGroup>
-            <ButtonOne text='Submit' to="/schools"/>
+            <ButtonOne text='Submit' to="/schools" onClick={saveDataEntry}/>
           </Form>
         </Container>
         <Footer/>

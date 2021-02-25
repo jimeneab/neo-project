@@ -4,10 +4,12 @@ import ButtonOne from './../components/button/index'
 import './style.css'
 import MainNav from './../components/navBar/mainNav'
 import Footer from './../components/footer/footer'
+import ModalApp from './../components/modal/index'
 
 function StudentsPage(){
     return(
         <>
+        <ModalApp/>
         <MainNav/>
         <Container>
             <Form className='formData'>
