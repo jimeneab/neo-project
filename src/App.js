@@ -6,6 +6,7 @@ import SchoolPage from './pages/schools'
 import StudentsPage from './pages/students'
 import LogInPage from './pages/logIn'
 import DashBoardPage from './pages/dashboard'
+import TestPage from './pages/test'
 import {
   BrowserRouter as Router,
   Switch,
@@ -13,8 +14,6 @@ import {
   Link
 } from "react-router-dom";
 import { Container, Row} from 'reactstrap';
-import MainNav from './components/navBar/mainNav';
-import Footer from './components/footer/footer';
 
 class App extends Component{
   constructor(){
@@ -37,8 +36,11 @@ class App extends Component{
           <Route path="/schools">
             <SchoolPage/>
           </Route>
-          <Route path="/">
+          <Route exact path="/">
             <HomePage />
+          </Route>
+          <Route path="/test">
+            <TestPage/>
           </Route>
         </Switch>
     </Router>

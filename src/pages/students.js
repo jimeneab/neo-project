@@ -1,20 +1,45 @@
-import React,{useState} from 'react'
-import { Container, Form, FormGroup, Label, Input, Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
+import React,{useState, useEffect} from 'react'
+import {
+  Container, 
+  Form,
+  FormGroup,
+  Label,
+  Input,
+  Button,
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Row,
+  Card,
+  CardImg,
+  CardBody,
+  CardTitle,
+  CardSubtitle
+} from 'reactstrap';
 import ButtonOne from './../components/button/index'
 import './style.css'
 import MainNav from './../components/navBar/mainNav'
 import Footer from './../components/footer/footer'
-import ModalApp from './../components/modal/index'
 
 function StudentsPage(){
   const [entryObjectE, setEntryObjectE]= useState({});
   const [modal, setModal] = useState(false);
+  const [studentsCollection, setStudentsCollection]= useState({})
 
   const getEntryDataE = event =>{
     let property = event.target.name
     let value = event.target.value
     setEntryObjectE({...entryObjectE, [property]:value})
   }
+  useEffect(()=>{
+    fetch("https://neo-app-55ad5-default-rtdb.firebaseio.com/students/.json",[])
+    .then(response=>response.json())
+    .then(json=>{
+      setStudentsCollection(json)
+    })
+  },[])
+
   const saveDataEntryE =()=>{
     fetch('https://neo-app-55ad5-default-rtdb.firebaseio.com/students/.json',{
       method: "POST",
@@ -42,8 +67,14 @@ function StudentsPage(){
           </Modal>
         </div>
         <MainNav/>
-        <Container>
-            <Form className='formData'>
+        <Container fluid>
+            <Row>
+              <div className="col-4 bg-dark text-white p-3">
+                <Form>
+                <FormGroup>
+              <Label for="urlimg">URL image</Label>
+              <Input type="urlimg" name="urlimg" id="urlimg" placeholder="Image" onChange={getEntryDataE}/>
+            </FormGroup>
             <FormGroup>
               <Label for="name">User</Label>
               <Input type="name" name="name" id="schoolName" placeholder="Neo educate" onChange={getEntryDataE} />
@@ -75,9 +106,28 @@ function StudentsPage(){
             <FormGroup className='studentButtons'>       
               <ButtonOne  text='Submit' to="/students" onClick={saveDataEntryE}/>
             </FormGroup> 
-          </Form>
-          </Container>
-          <Footer/>
+                </Form>
+              </div>
+              <div className="col-8 bg-light d-flex justify-content-center cardContent flex-wrap">
+                {
+                  Object.keys(studentsCollection).map(key=>{
+                    let {urlimg, name, country} = studentsCollection[key]
+                    return(
+                      <Card className="schoolCard m-2">
+                        <CardImg top width="100%" src={urlimg} alt="Card image cap" />
+                        <CardBody>
+                          <CardTitle tag="h5">{name}</CardTitle>
+                          <CardSubtitle tag="h6" className="mb-2 text-muted">{country}</CardSubtitle>
+                          <Button>Ir</Button>
+                        </CardBody>
+                      </Card>
+                    )
+                  })
+                }
+              </div>
+            </Row>
+        </Container>
+        <Footer/>
         </>
     )
 }
