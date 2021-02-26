@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
-import {Form, FormGroup, Label, Input, Row, Container} from 'reactstrap';
+import {Form, FormGroup, Label, Input, Container,
+Button, Modal, ModalHeader, ModalBody, ModalFooter} from 'reactstrap';
 import ButtonOne from './../components/button/index'
 import MainNav from './../components/navBar/mainNav'
 import Footer from './../components/footer/footer'
@@ -7,6 +8,9 @@ import ModalApp from './../components/modal/index'
 
 function SchoolPage(){
   const [entryObject, setEntryObject]= useState({});
+  const [modal, setModal] = useState(false);
+
+  const toggle = () => setModal(!modal);
 
   const getEntryData = event =>{
     let property = event.target.name
@@ -17,11 +21,26 @@ function SchoolPage(){
       fetch('https://neo-app-55ad5-default-rtdb.firebaseio.com/schools/.json',{
         method: "POST",
         body: JSON.stringify(entryObject)
-      })
+      }).then(response=>response.json())
+        .then(json=>{
+          console.log(json)
+          setModal(!modal)
+          setEntryObject({})
+        })
     }
         return (
         <>
-        <ModalApp/>
+        <div>
+          <Modal isOpen={modal} toggle={toggle}>
+            <ModalHeader toggle={toggle}>Aviso</ModalHeader>
+            <ModalBody>
+              La escuela ha sido creada con exito!
+            </ModalBody>
+            <ModalFooter>
+              <Button color="primary" onClick={toggle}>Cerrar</Button>
+            </ModalFooter>
+          </Modal>
+        </div>
         <MainNav/>
         <Container>
           <Form>
